@@ -1,0 +1,7 @@
+INFO:__main__:The file is going to explode!
+DEBUG:root:This message should go to a log file
+INFO:root:So should I log something
+WARNING:root:So should I log a warning message to the file
+ERROR:root:There is a critical error message
+INFO:root:Entering hello_world
+WARNING:root:leaving  hello_world after sleeping for 2 seconds

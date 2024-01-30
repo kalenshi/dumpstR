@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<div class="contact-div">
+
+    <div class="row left-contact">
+        <div class="col-lg">
+            <h1>Say Hello</h1>
+            <h5>Not sure where to start?</h5>
+        </div>
+        <div class="col-lg">
+            <img class="img-fluid" src="{% static 'img/undraw_map_re_60yf.svg' %}" alt="some location image"/>
+        </div>
+    </div>
+    <div class="right-contact">
+        <form method="POST" class="form">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="company" placeholder="Company Name" class="form-control"
+                       required>
+                <input type="email" name="email" placeholder="email address"
+                       class="form-control">
+                <input type="text" name="full-name" placeholder="Contact Person"
+                       class="form-control"
+                       id="" required>
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-control" placeholder="Message ..." required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="submit" value="Submit"
+                       class="btn btn-primary form-control" required>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="container register-form-div shadow p-4 mb-5 bg-body rounded">
+    <form action="{% url 'core:register' %}" method="POST">
+        <h1 class="text-center m-2">Register</h1>
+        {% csrf_token %}
+        <div class="form-group">
+            <div>
+                <div class="mb-3">{{form.first_name}}</div>
+                <div class="mb-3">{{form.last_name}}</div>
+            </div>
+            <div>
+                <div class="mb-3">{{form.email}}</div>
+                <div class="mb-3">{{form.confirm_email}}</div>
+            </div>
+            <div>
+                <div class="mb-3">{{form.password1}}</div>
+                <div class="mb-3">{{form.password2}}</div>
+            </div>
+
+            <div>
+                <input class="btn btn-primary form-control-sm mb-3" type="submit" value="Register"
+                       name="register">
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock body %}

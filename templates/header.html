@@ -1,0 +1,47 @@
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title|default_if_none:"dumpstR"}}</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav-styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="description" content="">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" sizes="any">
+    <link rel="icon" href="{% static 'img/icon.svg' %}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{% static 'img/icon.png' %}">
+
+    <!--  <link rel="manifest" href="site.webmanifest">-->
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+<div class="pagewrapper">
+    <div class="header-div">
+        {% include "navbar.html" %}
+        <div class="message-div">
+            {% if messages %}
+
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} centered alert-dismissible fade show"
+                 role="alert">
+                <strong>{{message}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
