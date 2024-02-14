@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+    api:
+        build:
+            context: .
+        ports:
+            - 8000:8000
+        command: python manage.py runserver 0.0.0.0:8000
+        depends_on:
+            - postgres
+
+        volumes:
+            - ./:/dumpstr
+    postgres:
+        image: postgres:15
+        volumes:
+            - psqlDB:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=analytQs
+            - POSTGRES_USER=admin
+            - POSTGRES_PASSWORD=password
+        restart: always
+
+    mysql:
+        image: mysql:8
+        ports:
+            - 3309:3306
+        volumes:
+            - mysqlDB:/var/lib/mysql
+        environment:
+            - MYSQL_USER=analytqs
+            - MYSQL_DATABSE=analytQS
+            - MYSQL_PASSWORD=bbros375
+            - MYSQL_ROOT_PASSWORD=YHZ_hg2ua
+        restart: always
+
+volumes:
+    psqlDB:
+    mysqlDB:
