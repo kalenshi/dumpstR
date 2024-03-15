@@ -80,17 +80,35 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.environ.get("MYSQL_DB_NAME", "dumpstR"),
+        "USER": os.environ.get("MYSQL_DB_USER", "dumpstR"),
+        "PASSWORD": os.environ.get("MYSQL_DB_PASS", "password"),
+        "HOST": os.environ.get("MYSQL_DB_HOST", "localhost"),
+        "PORT": os.environ.get("MYSQL_DB_PORT", "3306")
+    },
+    "backup": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": os.environ.get("PSQL_DB_NAME"),
+        "USER": os.environ.get("PSQL_DB_USER", "dumpstr"),
+        "PASSWORD": os.environ.get("PSQL_DB_PASS", "password"),
+        "HOST": os.environ.get("PSQL_DB_HOST", "localhost"),
+        "PORT": os.environ.get("PSQL_DB_PORT", "5432")
     }
 }
+
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
+}
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://redis:6379/1",
+    }
 }
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -140,6 +158,6 @@ AUTH_USER_MODEL = 'core.User'
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'kalenshi@gmail.com'
-EMAIL_HOST_PASSWORD = 'yenr vsgl bfiy vppl '
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "kalenshi@gmail.com")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "yenr vsgl bfiy vppl")
 EMAIL_USE_TLS = True
