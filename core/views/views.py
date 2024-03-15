@@ -11,7 +11,7 @@ from core.forms import UserRegistrationForm
 
 def home(request):
     context = {"title": "Home"}
-    msg = _("Welcome to The natural language processing")
+    msg = _("Welcome to DumpstR")
     messages.add_message(request, messages.SUCCESS, msg)
     return render(request, 'home.html', context)
 
@@ -70,7 +70,7 @@ def account(request, pk):
 def dashboard(request):
     context = {
         "title": request.user.slug, "user": request.user,
-        "looper": ['a', 'h', 'j', 'b', 'c', 'd','k']
+        "looper": ['a', 'h', 'j', 'b', 'c', 'd', 'k', 'l']
     }
     return render(request, "dashboard.html", context)
 
